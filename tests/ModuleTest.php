@@ -3,6 +3,7 @@
 namespace Zend\Jobs\Tests;
 
 use PHPUnit\Framework\TestCase;
+use Zend\Jobs\Reader\JobReader;
 use Zend\Jobs\Writer\JobWriter;
 use Zend\ModuleManager\ModuleManager;
 use Zend\Mvc\Application;
@@ -45,6 +46,12 @@ class ModuleTest extends TestCase
     public function testIfJobWriterIsAvailable()
     {
         $writer = $this->serviceManager->get(JobWriter::class);
-        $this->assertTrue($writer instanceof JobWriter);
+        $this->assertInstanceOf(JobWriter::class, $writer);
+    }
+
+    public function testIfJobReaderIsAvailable()
+    {
+        $reader = $this->serviceManager->get(JobReader::class);
+        $this->assertInstanceOf(JobReader::class, $reader);
     }
 }
